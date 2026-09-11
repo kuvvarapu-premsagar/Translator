@@ -1,0 +1,2628 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#0f766e">
+
+    <title>
+        PALASH | MTB-MLE AI Classroom
+    </title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+    <!-- Celebratory particle confetti canvas -->
+    <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+    <!-- =====================================================
+     APPLICATION
+===================================================== -->
+
+    <div class="app">
+
+
+        <!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-logo">
+                    🌿
+                </div>
+
+                <div>
+
+                    <h1>PALASH</h1>
+
+                    <span>
+                        MTB-MLE AI
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <p class="menu-label">
+                    TEACHING
+                </p>
+
+                <button class="nav-btn active" data-page="dashboard">
+
+                    <span>⌂</span>
+
+                    Dashboard
+
+                </button>
+
+
+                <button class="nav-btn" data-page="translator">
+
+                    <span>⇄</span>
+
+                    AI Translator
+
+                </button>
+
+
+                <button class="nav-btn" data-page="voice">
+
+                    <span>🎙</span>
+
+                    Voice Classroom
+
+                </button>
+
+
+                <button class="nav-btn" data-page="worksheet">
+
+                    <span>▤</span>
+
+                    Worksheets
+
+                </button>
+
+
+                <button class="nav-btn game-nav-btn" data-page="game">
+
+                    <span>🎮</span>
+
+                    भाषा खेल (Game Arena)
+
+                </button>
+
+
+                <button class="nav-btn kids-nav-btn" data-page="kidszone">
+
+                    <span>🎮</span>
+
+                    बाल वाटिका (Kids Zone)
+
+                </button>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <p class="menu-label">
+                    PROGRESS & PROFILE
+                </p>
+
+                <button class="nav-btn profile-nav-btn" data-page="profile">
+
+                    <span>👤</span>
+
+                    Profile & Stats
+
+                </button>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <p class="menu-label">
+                    SYSTEM
+                </p>
+
+
+                <button class="nav-btn" data-page="offline">
+
+                    <span>◉</span>
+
+                    Offline Center
+
+                </button>
+
+
+                <button class="nav-btn" data-page="curriculum">
+
+                    <span>◎</span>
+
+                    NIPUN Curriculum
+
+                </button>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="teacher-card" onclick="openPage('profile')" style="cursor:pointer;" title="View Performance Profile">
+
+                    <div class="teacher-avatar" id="sidebarTeacherAvatar">
+                        👨‍🏫
+                    </div>
+
+                    <div>
+
+                        <strong id="sidebarTeacherName">
+                            Sunita Murmu
+                        </strong>
+
+                        <small id="sidebarTeacherRole">
+                            Level 3 • FLN Explorer
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+     MAIN
+===================================================== -->
+
+        <main class="main">
+
+
+            <!-- =====================================================
+     TOPBAR
+===================================================== -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <div class="mobile-menu">
+                        ☰
+                    </div>
+
+                    <h2 id="pageTitle">
+                        Teacher Dashboard
+                    </h2>
+
+                    <p id="pageSubtitle">
+                        Deliver foundational learning in the child's
+                        mother tongue.
+                    </p>
+
+                </div>
+
+
+                <div class="top-actions">
+
+                    <div class="connection" id="connectionStatus">
+
+                        <span class="connection-dot"></span>
+
+                        <span id="connectionText">
+                            Offline Ready
+                        </span>
+
+                    </div>
+
+
+                    <select id="globalLanguage" class="language-select">
+
+                        <option value="santhali" selected>
+                            Santhali (ᱥᱟᱱᱛᱟᱲᱤ • Ol Chiki)
+                        </option>
+
+                        <option value="ho">
+                            Ho (𑢹𑣉𑣉 • Warang Chiti)
+                        </option>
+
+                        <option value="mundari">
+                            Mundari (मुंडारी • Mundari Bani)
+                        </option>
+
+                        <option value="hindi">
+                            Hindi (हिन्दी • Bridge)
+                        </option>
+
+                    </select>
+
+                    <button class="icon-toggle-btn" id="soundToggleBtn" title="Toggle Sound Effects (SFX)" onclick="toggleSoundFX()" aria-label="Toggle Sound Effects">
+                        <span id="soundIcon">🔊</span>
+                    </button>
+
+                    <button class="icon-toggle-btn" id="themeToggleBtn" title="Toggle Dark / Light Mode" onclick="toggleTheme()" aria-label="Toggle Theme">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+
+                    <div class="profile" id="headerProfileAvatar" title="View Learner Profile & Performance Hub" onclick="openPage('profile')">
+                        👨‍🏫
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =====================================================
+     CONTENT
+===================================================== -->
+
+            <section class="content">
+
+
+                <!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+                <div class="page active" id="dashboard">
+
+
+                    <div class="welcome">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                🌿 JHARKHAND PALASH • MTB-MLE AI TECHNOLOGY BRIDGE
+                            </span>
+
+                            <h1>
+                                Empowering Hindi-Trained Teachers in Tribal Classrooms
+                            </h1>
+
+                            <p>
+                                Scaling Mother Tongue-Based Multilingual Education (MTB-MLE) across <strong>5,000+ tribal-area primary schools</strong> in Jharkhand. Delivering real-time pedagogical translation for Hindi-medium teachers into <strong>Ho (𑢹𑣉𑣉)</strong>, <strong>Mundari (मुंडारी)</strong>, and <strong>Santhali (ᱥᱟᱱᱛᱟᱲᱤ)</strong> with authentic scripts and teacher pronunciation guides.
+                            </p>
+
+                            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
+                                <button class="primary-btn" onclick="openPage('voice')">
+                                    🎙️ Open Voice Classroom
+                                    <span>→</span>
+                                </button>
+                                <button class="primary-btn" style="background:#0f766e;" onclick="openPage('translator')">
+                                    ⇄ AI Translator
+                                    <span>→</span>
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                        <div class="welcome-visual">
+
+                            <div class="language-orbit">
+
+                                <div class="orbit-center">
+                                    PALASH
+                                </div>
+
+                                <div class="orbit-item orbit-one">
+                                    ᱥᱟᱱᱛᱟᱲᱤ
+                                </div>
+
+                                <div class="orbit-item orbit-two">
+                                    𑢹𑣉𑣉
+                                </div>
+
+                                <div class="orbit-item orbit-three">
+                                    मुंडारी
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stats-grid">
+
+
+                        <div class="stat-card">
+
+                            <div class="stat-icon">
+                                🏫
+                            </div>
+
+                            <div>
+
+                                <strong id="schoolsStat">
+                                    5,000+
+                                </strong>
+
+                                <span>
+                                    Tribal Schools (झारखंड)
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <div class="stat-icon">
+                                🌐
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    3
+                                </strong>
+
+                                <span>
+                                    Tribal Languages
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <div class="stat-icon">
+                                ⚡
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    &lt;3s
+                                </strong>
+
+                                <span>
+                                    Voice Latency Target
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <div class="stat-icon">
+                                📡
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    100%
+                                </strong>
+
+                                <span>
+                                    Offline Ready
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="section-title">
+
+                        <div>
+
+                            <h2>
+                                Teaching Tools
+                            </h2>
+
+                            <p>
+                                Everything a Hindi-medium teacher needs
+                                for mother-tongue instruction.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="tools-grid">
+
+
+                        <div class="tool-card" onclick="openPage('translator')">
+
+                            <div class="tool-icon green">
+                                ⇄
+                            </div>
+
+                            <h3>
+                                AI Translator
+                            </h3>
+
+                            <p>
+                                Convert Hindi lesson scripts and
+                                classroom instructions into
+                                tribal-language content.
+                            </p>
+
+                            <span class="tool-link">
+                                Translate →
+                            </span>
+
+                        </div>
+
+
+                        <div class="tool-card" onclick="openPage('voice')">
+
+                            <div class="tool-icon blue">
+                                🎙
+                            </div>
+
+                            <h3>
+                                Voice Classroom
+                            </h3>
+
+                            <p>
+                                Speak Hindi naturally and communicate
+                                with students through real-time translation.
+                            </p>
+
+                            <span class="tool-link">
+                                Start voice mode →
+                            </span>
+
+                        </div>
+
+
+                        <div class="tool-card" onclick="openPage('worksheet')">
+
+                            <div class="tool-icon orange">
+                                ▤
+                            </div>
+
+                            <h3>
+                                Worksheet AI
+                            </h3>
+
+                            <p>
+                                Generate bilingual FLN worksheets
+                                aligned to NIPUN Bharat outcomes.
+                            </p>
+
+                            <span class="tool-link">
+                                Generate →
+                            </span>
+
+                        </div>
+
+
+                        <div class="tool-card game-tool-card" onclick="openPage('game')">
+
+                            <div class="tool-icon purple">
+                                🎮
+                            </div>
+
+                            <h3>
+                                भाषा खेल (Language Arena)
+                            </h3>
+
+                            <p>
+                                3 Age Tiers (Kids, Teens, Adults): Balloon Pop, Word Scramble & Cultural Master!
+                            </p>
+
+                            <span class="tool-link">
+                                Play & Learn →
+                            </span>
+
+                        </div>
+
+
+                        <div class="tool-card kids-tool-card" onclick="openPage('kidszone')">
+
+                            <div class="tool-icon yellow">
+                                🎮
+                            </div>
+
+                            <h3>
+                                बाल वाटिका (Play Zone)
+                            </h3>
+
+                            <p>
+                                Interactive games, 3D flip cards, and animations for early tribal learners.
+                            </p>
+
+                            <span class="tool-link">
+                                Play & Learn →
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-bottom">
+
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <h3>
+                                        Today's Learning
+                                    </h3>
+
+                                    <p>
+                                        Classroom activity overview
+                                    </p>
+
+                                </div>
+
+                                <span class="panel-badge">
+                                    LIVE
+                                </span>
+
+                            </div>
+
+
+                            <div class="progress-item">
+
+                                <div class="progress-info">
+
+                                    <span>
+                                        Literacy
+                                    </span>
+
+                                    <strong>
+                                        72%
+                                    </strong>
+
+                                </div>
+
+                                <div class="progress">
+
+                                    <span style="width:72%"></span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-item">
+
+                                <div class="progress-info">
+
+                                    <span>
+                                        Numeracy
+                                    </span>
+
+                                    <strong>
+                                        58%
+                                    </strong>
+
+                                </div>
+
+                                <div class="progress">
+
+                                    <span style="width:58%"></span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-item">
+
+                                <div class="progress-info">
+
+                                    <span>
+                                        Vocabulary
+                                    </span>
+
+                                    <strong>
+                                        84%
+                                    </strong>
+
+                                </div>
+
+                                <div class="progress">
+
+                                    <span style="width:84%"></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <h3>
+                                        Recent Activity
+                                    </h3>
+
+                                    <p>
+                                        Your latest resources
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="activity">
+
+                                <div class="activity-icon">
+                                    🔤
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Hindi → Santhali
+                                    </strong>
+
+                                    <span>
+                                        Classroom phrases
+                                    </span>
+
+                                </div>
+
+                                <time>
+                                    2m
+                                </time>
+
+                            </div>
+
+
+                            <div class="activity">
+
+                                <div class="activity-icon">
+                                    📄
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Grade 1 Worksheet
+                                    </strong>
+
+                                    <span>
+                                        Foundational Literacy
+                                    </span>
+
+                                </div>
+
+                                <time>
+                                    18m
+                                </time>
+
+                            </div>
+
+
+                            <div class="activity">
+
+                                <div class="activity-icon">
+                                    🎴
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Vocabulary Cards
+                                    </strong>
+
+                                    <span>
+                                        Classroom objects
+                                    </span>
+
+                                </div>
+
+                                <time>
+                                    1h
+                                </time>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================================
+     TRANSLATOR
+===================================================== -->
+
+                <div class="page" id="translator">
+
+
+                    <div class="page-heading">
+
+                        <span class="eyebrow">
+                            🌿 JHARKHAND PALASH • TEACHER'S AI LANGUAGE BRIDGE
+                        </span>
+
+                        <h1>
+                            Teacher's Linguistic Bridge (शिक्षक भाषा सेतु)
+                        </h1>
+
+                        <p>
+                            Translate classroom instructions from Hindi (or English) into tribal mother tongues: <strong>Santhali (ᱥᱟᱱᱛᱟᱲᱤ • Ol Chiki)</strong>, <strong>Ho (𑢹𑣉𑣉 • Warang Chiti)</strong>, and <strong>Mundari (मुंडारी)</strong>. Includes teacher pronunciation cues for Hindi-medium educators.
+                        </p>
+
+                    </div>
+
+
+                    <div class="translator-layout">
+
+
+                        <div class="translation-box">
+
+
+                            <div class="box-header">
+
+                                <div>
+
+                                    <span class="language-tag">
+                                        TEACHER INPUT
+                                    </span>
+
+                                    <h3>
+                                        🇮🇳 हिन्दी / English
+                                    </h3>
+
+                                </div>
+
+                                <button class="mic-small-btn" id="translatorMicBtn" onclick="toggleTranslatorMic()" title="Click to speak instruction">
+                                    🎙 Speak
+                                </button>
+
+                            </div>
+
+
+                            <textarea id="sourceText"
+                                placeholder="शिक्षक की भाषा में लिखें या बोलें (उदा. बच्चों बैठ जाओ, अपनी किताब खोलो)...">बच्चों बैठ जाओ और अपनी किताब खोलो।</textarea>
+
+
+                            <div class="quick-phrases">
+
+                                <button onclick="setPhrase('बच्चों बैठ जाओ और अपनी किताब खोलो')">
+                                    बैठ जाओ & किताब खोलो
+                                </button>
+
+                                <button onclick="setPhrase('कहानी ध्यान से सुनो और मेरे साथ बोलो')">
+                                    कहानी सुनो
+                                </button>
+
+                                <button onclick="setPhrase('एक से दस तक गिनती गिनो')">
+                                    गिनती गिनो (1-10)
+                                </button>
+
+                                <button onclick="setPhrase('शाबाश बच्चों, बहुत अच्छा')">
+                                    शाबाश बच्चों ⭐
+                                </button>
+
+                                <button onclick="setPhrase('हाथ धो लो और खाना खाओ')">
+                                    हाथ धो लो
+                                </button>
+
+                                <button onclick="setPhrase('Good morning children, please sit down')">
+                                    Good morning
+                                </button>
+
+                            </div>
+
+
+                            <button class="translate-btn" onclick="translateText()">
+
+                                <span>
+                                    ✨ Translate to Tribal Mother Tongue (मातृभाषा अनुवाद)
+                                </span>
+
+                                <span>
+                                    →
+                                </span>
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="translation-arrow">
+                            →
+                        </div>
+
+
+                        <div class="translation-box output-box">
+
+
+                            <div class="box-header">
+
+                                <div>
+
+                                    <span class="language-tag output-tag">
+                                        TRIBAL TARGET
+                                    </span>
+
+                                    <h3 id="targetLanguageName">
+                                        Santhali (ᱥᱟᱱᱛᱟᱲᱤ • Ol Chiki)
+                                    </h3>
+
+                                </div>
+
+                                <span class="confidence" id="confidence">
+                                    AI Ready
+                                </span>
+
+                            </div>
+
+
+                            <div class="translation-result" id="translationResult">
+
+                                <span class="result-placeholder">
+                                    Tribal mother tongue translation & teacher pronunciation guide will appear here.
+                                </span>
+
+                            </div>
+
+
+                            <div class="result-actions">
+
+                                <button onclick="speakTranslation()">
+
+                                    🔊 Listen
+
+                                </button>
+
+                                <button onclick="copyTranslation()">
+
+                                    ⧉ Copy
+
+                                </button>
+
+                                <button onclick="saveTranslation()">
+
+                                    ♡ Save
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="translation-info">
+
+
+                        <div class="info-card">
+
+                            <span>
+                                ⚡
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Fast inference
+                                </strong>
+
+                                <p>
+                                    Designed for sub-3-second classroom interaction.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-card">
+
+                            <span>
+                                🎯
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Context aware
+                                </strong>
+
+                                <p>
+                                    Curriculum vocabulary is prioritised over
+                                    literal word-by-word translation.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-card">
+
+                            <span>
+                                📱
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Offline capable
+                                </strong>
+
+                                <p>
+                                    Cached language resources remain available
+                                    without internet.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================================
+     VOICE CLASSROOM
+===================================================== -->
+
+                <div class="page" id="voice">
+
+
+                    <div class="page-heading">
+
+                        <span class="eyebrow">
+                            🌿 REAL-TIME CLASSROOM LINGUISTIC BRIDGE
+                        </span>
+
+                        <h1>
+                            Voice Classroom
+                        </h1>
+
+                        <p>
+                            Designed for Hindi-medium teachers. Speak in Hindi (or English) — PALASH translates in real-time into the students' tribal mother tongue (Santhali, Ho, or Mundari) with authentic scripts and pronunciation guides.
+                        </p>
+
+                    </div>
+
+
+                    <div class="voice-interface">
+
+
+                        <div class="voice-language">
+
+                            <div class="voice-lang-box">
+
+                                <span>
+                                    TEACHER (शिक्षक)
+                                </span>
+
+                                <strong id="voiceTeacherLanguage">
+                                    🇮🇳 Hindi (हिन्दी)
+                                </strong>
+
+                            </div>
+
+
+                            <div class="voice-arrow">
+                                ⇄
+                            </div>
+
+
+                            <div class="voice-lang-box">
+
+                                <span>
+                                    TRIBAL STUDENTS (मातृभाषा)
+                                </span>
+
+                                <strong id="voiceTargetLanguage">
+                                    ᱥᱟᱱᱛᱟᱲᱤ Santhali (Ol Chiki)
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="voice-circle-container">
+
+                            <div class="voice-ring ring-1"></div>
+
+                            <div class="voice-ring ring-2"></div>
+
+                            <div class="voice-ring ring-3"></div>
+
+
+                            <button id="voiceButton" class="voice-main-btn" onclick="toggleVoice()" title="Click to start teacher voice recording in Hindi or English">
+
+                                <span id="voiceIcon">
+                                    🎙
+                                </span>
+
+                            </button>
+
+                        </div>
+
+
+                        <h2 id="voiceStatus">
+                            Tap mic to speak (बोलने के लिए माइक दबाएं)
+                        </h2>
+
+                        <p class="voice-help">
+                            Speak instructions in Hindi or English, or tap the quick teacher command chips below.
+                        </p>
+
+                        <!-- Equalizer Waveform Animation -->
+                        <div class="audio-equalizer" id="audioEqualizer">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+
+                        <!-- Voice Quick Simulation Test Chips (Hindi Classroom Commands for Teachers) -->
+                        <div class="voice-presets">
+                            <span class="presets-label">⚡ शिक्षक आवाज़ परीक्षण (Teacher Voice Commands):</span>
+                            <button class="voice-chip" onclick="simulateVoice('बच्चों बैठ जाओ')">
+                                🎙️ "बच्चों बैठ जाओ"
+                            </button>
+                            <button class="voice-chip" onclick="simulateVoice('अपनी किताब खोलो')">
+                                🎙️ "अपनी किताब खोलो"
+                            </button>
+                            <button class="voice-chip" onclick="simulateVoice('कहानी ध्यान से सुनो')">
+                                🎙️ "कहानी ध्यान से सुनो"
+                            </button>
+                            <button class="voice-chip" onclick="simulateVoice('एक से दस तक गिनो')">
+                                🎙️ "एक से दस तक गिनो"
+                            </button>
+                            <button class="voice-chip" onclick="simulateVoice('शाबाश, बहुत अच्छा')">
+                                🎙️ "शाबाश, बहुत अच्छा"
+                            </button>
+                            <button class="voice-chip" onclick="simulateVoice('पानी पी लो')">
+                                🎙️ "पानी पी लो"
+                            </button>
+                            <button class="voice-chip" onclick="simulateVoice('Good morning children')">
+                                🎙️ "Good morning children"
+                            </button>
+                        </div>
+
+
+                        <div class="live-conversation">
+
+
+                            <div class="conversation-row teacher-row">
+
+                                <div class="speaker">
+                                    T
+                                </div>
+
+                                <div class="bubble">
+
+                                    <small id="teacherBubbleLabel">
+                                        TEACHER (शिक्षक) • HINDI / ENGLISH
+                                    </small>
+
+                                    <p id="voiceInput">
+                                        बोलने के लिए माइक दबाएं या ऊपर दिए गए परीक्षण वाक्यों पर क्लिक करें...
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="conversation-row ai-row">
+
+                                <div class="speaker ai">
+                                    AI
+                                </div>
+
+                                <div class="bubble ai-bubble">
+
+                                    <small id="studentBubbleLabel">
+                                        PALASH AI • TRIBAL MOTHER TONGUE (मातृभाषा)
+                                    </small>
+
+                                    <p id="voiceOutput">
+                                        मातृभाषा (Santhali / Ho / Mundari) अनुवाद एवं शिक्षक उच्चारण निर्देश यहाँ दिखाई देगा।
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="latency-display">
+
+                            <span>
+                                ⚡ Response latency
+                            </span>
+
+                            <strong id="latency">
+                                -- ms
+                            </strong>
+
+                            <span class="latency-good">
+                                Target &lt; 3000ms
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================================
+     WORKSHEET
+===================================================== -->
+
+                <div class="page" id="worksheet">
+
+
+                    <div class="page-heading">
+
+                        <span class="eyebrow">
+                            AI CURRICULUM GENERATOR
+                        </span>
+
+                        <h1>
+                            Bilingual Worksheets
+                        </h1>
+
+                        <p>
+                            Generate FLN activities aligned with
+                            NIPUN Bharat outcomes.
+                        </p>
+
+                    </div>
+
+
+                    <div class="generator-layout">
+
+
+                        <div class="generator-controls panel">
+
+
+                            <h3>
+                                Worksheet Settings
+                            </h3>
+
+
+                            <label>
+                                Grade
+                            </label>
+
+                            <select id="gradeSelect">
+
+                                <option>
+                                    Grade 1
+                                </option>
+
+                                <option>
+                                    Grade 2
+                                </option>
+
+                                <option>
+                                    Grade 3
+                                </option>
+
+                            </select>
+
+
+                            <label>
+                                Learning Area
+                            </label>
+
+                            <select id="topicSelect">
+
+                                <option>
+                                    Foundational Literacy
+                                </option>
+
+                                <option>
+                                    Foundational Numeracy
+                                </option>
+
+                            </select>
+
+
+                            <label>
+                                Mother Tongue
+                            </label>
+
+                            <select id="worksheetLanguage">
+
+                                <option value="santhali">
+                                    Santhali
+                                </option>
+
+                                <option value="ho">
+                                    Ho
+                                </option>
+
+                                <option value="mundari">
+                                    Mundari
+                                </option>
+
+                            </select>
+
+
+                            <label>
+                                Number of Activities
+                            </label>
+
+                            <input type="range" id="activityCount" min="3" max="5" value="5"
+                                oninput="updateActivityCount()">
+
+                            <div class="range-value">
+                                <span id="activityCountValue">
+                                    5
+                                </span>
+                                activities
+                            </div>
+
+
+                            <button class="primary-btn full" onclick="generateWorksheet()">
+
+                                ✨ Generate Worksheet
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="worksheet-preview panel" id="worksheetPreview">
+
+                            <div class="empty-generator">
+
+                                <div>
+                                    📄
+                                </div>
+
+                                <h2>
+                                    Worksheet Preview
+                                </h2>
+
+                                <p>
+                                    Configure the worksheet and generate
+                                    bilingual activities.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================================
+                     MULTI-TIER LANGUAGE GAME ARENA
+                ===================================================== -->
+                <div class="page" id="game">
+
+                    <div class="page-heading game-heading">
+                        <div class="heading-badge-row">
+                            <span class="eyebrow game-eyebrow">
+                                🎮 भाषा खेल साहसिक • MULTI-TIER LANGUAGE ARENA
+                            </span>
+                            <div class="game-tier-indicator-pill" id="gameTierIndicator">
+                                <span id="gameTierPillIcon">🧒</span>
+                                <strong id="gameTierPillText">लेवल 1: बच्चे (Kids 3–8 yrs)</strong>
+                                <button class="change-tier-btn" onclick="openGameAgeModal()" title="Change Age / Level">
+                                    🔄 आयु बदलें (Change Age)
+                                </button>
+                            </div>
+                        </div>
+
+                        <h1>
+                            खेल-खेल में सीखें मातृभाषा 🎈
+                        </h1>
+                        <p>
+                            Enjoy animated interactive language learning games tailored for 3 age levels: Kids (3–8), Teens (9–17), and Adults (18+). Master Colours, Animals, and Everyday Words!
+                        </p>
+                    </div>
+
+                    <!-- GAME CONTROLS & SETTINGS BAR -->
+                    <div class="game-controls-bar panel">
+                        <div class="game-control-group">
+                            <label>भाषा (Language):</label>
+                            <select id="gameLanguageSelect" onchange="onGameLanguageChange()">
+                                <option value="santhali">संथाली (Santhali - ᱚᱞ ᱪᱤᱠᱤ)</option>
+                                <option value="ho">हो (Ho - ᱣᱟᱨᱟᱝ ᱪᱤᱛᱤ)</option>
+                                <option value="mundari">मुंडारी (Mundari)</option>
+                                <option value="hindi">हिन्दी (Hindi)</option>
+                            </select>
+                        </div>
+
+                        <div class="game-control-group">
+                            <label>विषय (Topic):</label>
+                            <div class="game-topic-pills" id="gameTopicPills">
+                                <button class="game-topic-btn active" data-topic="Colours" onclick="selectGameTopic('Colours')">
+                                    🎨 रंग (Colours)
+                                </button>
+                                <button class="game-topic-btn" data-topic="Animals" onclick="selectGameTopic('Animals')">
+                                    🐾 जानवर (Animals)
+                                </button>
+                                <button class="game-topic-btn" data-topic="Words" onclick="selectGameTopic('Words')">
+                                    💬 शब्द (Words)
+                                </button>
+                                <button class="game-topic-btn" data-topic="Mixed" onclick="selectGameTopic('Mixed')">
+                                    🌟 मिश्रित (Mixed)
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="game-control-group game-actions-right">
+                            <button class="game-sound-toggle-btn" id="gameAudioToggleBtn" onclick="toggleGameSound()">
+                                🔊 आवाज़ चालू (Sound On)
+                            </button>
+                            <button class="primary-btn new-game-btn" onclick="startFreshGameSession()">
+                                ⚡ नया खेल (New Game)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- SCOREBOARD & STATS RIBBON -->
+                    <div class="game-scoreboard-ribbon">
+                        <div class="score-card stars-card">
+                            <span class="score-icon pulse-icon">⭐</span>
+                            <div>
+                                <small>तारे (Stars)</small>
+                                <strong id="gameStarsVal">0</strong>
+                            </div>
+                        </div>
+
+                        <div class="score-card streak-card">
+                            <span class="score-icon fire-icon">🔥</span>
+                            <div>
+                                <small>स्ट्रीक (Streak)</small>
+                                <strong id="gameStreakVal">0x</strong>
+                            </div>
+                        </div>
+
+                        <div class="score-card accuracy-card">
+                            <span class="score-icon">🎯</span>
+                            <div>
+                                <small>सही उत्तर (Correct)</small>
+                                <strong id="gameCorrectVal">0</strong>
+                            </div>
+                        </div>
+
+                        <div class="score-card tier-badge-card" id="scoreboardTierBadge">
+                            <span class="score-icon">🏆</span>
+                            <div>
+                                <small>सक्रिय स्तर (Current Level)</small>
+                                <strong id="gameActiveTierLabel">Kids (3–8 yrs)</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         TIER 1: KIDS GAME ARENA (Ages 3-8)
+                         Balloon Pop, Bouncy Animals, Colors & Audio
+                    =========================================== -->
+                    <div id="gameTierKidsArea" class="game-arena-stage tier-kids-stage">
+                        <!-- MASCOT BANNER -->
+                        <div class="kids-game-mascot">
+                            <div class="mascot-face-animated">
+                                <span class="mascot-bubble">🎈</span>
+                                <span class="mascot-avatar">🦁</span>
+                                <span class="mascot-star">✨</span>
+                            </div>
+                            <div class="mascot-bubble-text">
+                                <h3 id="kidsMascotHeading">प्यारे बच्चों, सही गुब्बारा ढूंढो और फोड़ो! 🎈</h3>
+                                <p id="kidsMascotSub">
+                                    चित्र और आवाज़ सुनो, फिर सही गुब्बारे पर क्लिक करके चमकीले तारे जीतो!
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- TARGET CHALLENGE CARD -->
+                        <div class="kids-target-card panel" id="kidsTargetCard">
+                            <div class="kids-target-badge">
+                                <span id="kidsTargetCategoryBadge">🎨 रंग (Colour)</span>
+                            </div>
+                            <div class="kids-target-display">
+                                <span class="kids-target-emoji" id="kidsTargetEmoji">🔴</span>
+                                <div class="kids-target-words">
+                                    <h2 id="kidsTargetTribal">Araq' (लाल)</h2>
+                                    <span class="kids-target-phonetic" id="kidsTargetPhonetic">Phonetic: Araq' • English: Red</span>
+                                </div>
+                                <button class="kids-audio-btn" onclick="playTargetWordAudio()" title="Listen Pronunciation">
+                                    🔊 उच्चारण सुनो
+                                </button>
+                            </div>
+                            <div class="kids-instruction-prompt" id="kidsInstructionPrompt">
+                                👇 नीचे उड़ते हुए सही गुब्बारे या जानवर पर क्लिक करो:
+                            </div>
+                        </div>
+
+                        <!-- BALLOONS & ANIMAL SKY CANVAS -->
+                        <div class="kids-sky-canvas panel" id="kidsSkyCanvas">
+                            <!-- Floating animated balloons and animal cards injected here dynamically -->
+                        </div>
+
+                        <!-- REWARD CELEBRATION BOX -->
+                        <div class="game-feedback-banner panel" id="kidsFeedbackBanner" style="display:none;">
+                            <div class="feedback-celebration-icon" id="kidsFeedbackIcon">🌟</div>
+                            <div class="feedback-text-content">
+                                <h3 id="kidsFeedbackTitle">शानदार! सही जवाब! 🎈</h3>
+                                <p id="kidsFeedbackSubtitle">आपने 10 चमकीले तारे जीत लिए!</p>
+                            </div>
+                            <button class="primary-btn next-challenge-btn" onclick="nextGameChallenge()">
+                                अगला खेल → (Next)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         TIER 2: YOUTH & TEENS GAME ARENA (Ages 9-17)
+                         Speed Rush, Match Matrix, Word Scramble
+                    =========================================== -->
+                    <div id="gameTierYouthArea" class="game-arena-stage tier-youth-stage" style="display:none;">
+                        <!-- RUSH HEADER & TIMER -->
+                        <div class="youth-rush-header panel">
+                            <div class="rush-title-row">
+                                <span class="rush-tag">⚡ SPEED ARCADE</span>
+                                <h3>रैपिड वर्ड मैच और शब्द पहेली (Speed Challenge)</h3>
+                                <div class="rush-streak-indicator" id="youthStreakTag">
+                                    COMBO x1
+                                </div>
+                            </div>
+                            <div class="rush-timer-wrapper">
+                                <div class="rush-timer-bar" id="youthTimerBar" style="width: 100%;"></div>
+                            </div>
+                            <div class="rush-timer-label">
+                                ⏱️ समय शेष: <span id="youthTimerSeconds">15</span>s
+                            </div>
+                        </div>
+
+                        <!-- YOUTH SUB-MODE SELECTOR -->
+                        <div class="youth-mode-tabs">
+                            <button class="youth-mode-btn active" id="youthTabMatch" onclick="switchYouthSubMode('match')">
+                                🎯 स्पीड मैच (Rapid Match)
+                            </button>
+                            <button class="youth-mode-btn" id="youthTabScramble" onclick="switchYouthSubMode('scramble')">
+                                🧩 शब्द पहेली (Word Scramble)
+                            </button>
+                        </div>
+
+                        <!-- MODE A: RAPID MATCH MATRIX -->
+                        <div id="youthMatchSection" class="youth-sub-stage">
+                            <div class="youth-question-card panel">
+                                <div class="youth-prompt">
+                                    <span class="youth-word-emoji" id="youthTargetEmoji">🐘</span>
+                                    <div>
+                                        <h2 id="youthTargetWord">हाथी (Elephant)</h2>
+                                        <small id="youthPromptHint">संथाली / हो में सही शब्द चुनो!</small>
+                                    </div>
+                                    <button class="audio-mini-btn" onclick="playTargetWordAudio()">
+                                        🔊
+                                    </button>
+                                </div>
+
+                                <div class="youth-options-grid" id="youthOptionsGrid">
+                                    <!-- Dynamic options injected here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MODE B: WORD SCRAMBLE SOLVER -->
+                        <div id="youthScrambleSection" class="youth-sub-stage" style="display:none;">
+                            <div class="youth-scramble-card panel">
+                                <div class="scramble-header">
+                                    <span id="scrambleEmoji">🌳</span>
+                                    <div>
+                                        <h3 id="scrambleClueWord">पेड़ (Tree)</h3>
+                                        <small id="scrambleLanguageHint">अक्षरों को सही क्रम में जोड़कर शब्द पूरा करें:</small>
+                                    </div>
+                                </div>
+
+                                <!-- Current Assembled Word Slots -->
+                                <div class="scramble-slots-row" id="scrambleSlotsRow">
+                                    <!-- Dynamic slots -->
+                                </div>
+
+                                <!-- Letter Tiles Available to Pick -->
+                                <div class="scramble-tiles-row" id="scrambleTilesRow">
+                                    <!-- Dynamic draggable/clickable tiles -->
+                                </div>
+
+                                <div class="scramble-actions">
+                                    <button class="secondary-btn" onclick="resetCurrentScramble()">
+                                        ↺ रीसेट करें (Clear)
+                                    </button>
+                                    <button class="primary-btn" onclick="checkScrambleAnswer()">
+                                        ✓ उत्तर जांचें (Submit)
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- YOUTH FEEDBACK -->
+                        <div class="game-feedback-banner panel" id="youthFeedbackBanner" style="display:none;">
+                            <div class="feedback-celebration-icon" id="youthFeedbackIcon">⚡</div>
+                            <div class="feedback-text-content">
+                                <h3 id="youthFeedbackTitle">शानदार स्पीड! +50 XP</h3>
+                                <p id="youthFeedbackSubtitle">स्ट्रीक मल्टीप्लायर बढ़ गया!</p>
+                            </div>
+                            <button class="primary-btn next-challenge-btn" onclick="nextGameChallenge()">
+                                अगला सवाल → (Next)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ==========================================
+                         TIER 3: ADULTS GAME ARENA (Ages 18+)
+                         Cultural Context, Dialogue & Deep Vocabulary
+                    =========================================== -->
+                    <div id="gameTierAdultsArea" class="game-arena-stage tier-adults-stage" style="display:none;">
+                        <div class="adults-intro-bar panel">
+                            <div class="adults-badge">
+                                <span>🏛️ भाषा और संस्कृति प्रवीणता (Language & Heritage Mastery)</span>
+                            </div>
+                            <h3>सांस्कृतिक संदर्भ, लोककथा शब्दावली और व्यावहारिक संवाद</h3>
+                            <p>Explore deep etymology, tribal folklore, nature idioms, and conversational usage across Jharkhand's indigenous languages.</p>
+                        </div>
+
+                        <div class="adults-content-grid">
+                            <!-- LEFT: CULTURAL INSIGHT CARD -->
+                            <div class="adults-cultural-card panel" id="adultsCulturalCard">
+                                <div class="cultural-card-header">
+                                    <span class="cultural-icon" id="adultsCultureEmoji">🌿</span>
+                                    <div>
+                                        <h3 id="adultsCultureTitle">पारंपरिक संदर्भ (Cultural Context)</h3>
+                                        <small id="adultsCultureSubtitle">झारखंड की प्राकृतिक व सांस्कृतिक विरासत</small>
+                                    </div>
+                                </div>
+                                <div class="cultural-card-body">
+                                    <p id="adultsCultureDescription">
+                                        सरहुल पर्व में सखुआ (साल) वृक्ष और पलाश के सुनहरे फूलों का विशेष महत्व होता है। यह प्रकृति के साथ सह-अस्तित्व का उत्सव है।
+                                    </p>
+                                    <div class="cultural-word-box">
+                                        <div>
+                                            <span class="word-meta-label">मातृभाषा शब्द (Tribal Term):</span>
+                                            <h2 id="adultsTargetTribal">Baha (ᱵᱟᱦᱟ)</h2>
+                                        </div>
+                                        <div>
+                                            <span class="word-meta-label">रोमन उच्चारण (Phonetic):</span>
+                                            <strong id="adultsTargetPhonetic">Baha • फूल (Flower)</strong>
+                                        </div>
+                                        <button class="cultural-audio-btn" onclick="playTargetWordAudio()">
+                                            🔊 शुद्ध उच्चारण सुनें (Listen)
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- RIGHT: MASTERY CHALLENGE -->
+                            <div class="adults-challenge-card panel" id="adultsChallengeCard">
+                                <div class="challenge-header">
+                                    <span class="challenge-tag">संवाद व अर्थ पहेली</span>
+                                    <h3 id="adultsChallengeQuestion">इस संदर्भ में सही शब्द या वाक्य का चयन करें:</h3>
+                                </div>
+
+                                <div class="adults-sentence-box" id="adultsSentenceBox">
+                                    <p id="adultsSentencePrompt">
+                                        "करमा पूजा में हम प्रकृति की रक्षा के लिए <span class="blank-slot" id="adultsBlankSlot">[ _____ ]</span> लगाते हैं।"
+                                    </p>
+                                </div>
+
+                                <div class="adults-options-list" id="adultsOptionsList">
+                                    <!-- Dynamic options injected here -->
+                                </div>
+
+                                <!-- ADULTS FEEDBACK -->
+                                <div class="game-feedback-banner panel" id="adultsFeedbackBanner" style="display:none; margin-top:16px;">
+                                    <div class="feedback-celebration-icon" id="adultsFeedbackIcon">🎓</div>
+                                    <div class="feedback-text-content">
+                                        <h3 id="adultsFeedbackTitle">उत्कृष्ट! सही सांस्कृतिक समझ</h3>
+                                        <p id="adultsFeedbackSubtitle">आपकी भाषा प्रवीणता बढ़ रही है!</p>
+                                    </div>
+                                    <button class="primary-btn next-challenge-btn" onclick="nextGameChallenge()">
+                                        अगला संदर्भ → (Next)
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- =====================================================
+                     AGE GATE & LEVEL SELECTOR MODAL
+                ===================================================== -->
+                <div class="game-modal-backdrop" id="gameAgeModal" style="display:none;">
+                    <div class="game-age-modal-card panel">
+                        <div class="modal-top">
+                            <span class="modal-mascot">🎯</span>
+                            <h2>आपकी आयु क्या है? (Select Your Age)</h2>
+                            <p>हम आपकी उम्र के अनुसार सबसे मजेदार और ज्ञानवर्धक खेल तैयार करेंगे!</p>
+                        </div>
+
+                        <!-- Direct Age Number Input with Live Detection -->
+                        <div class="age-input-row">
+                            <label for="gameUserAgeInput">अपनी उम्र दर्ज करें (Enter Age):</label>
+                            <div class="age-input-box">
+                                <button type="button" class="age-stepper-btn" onclick="adjustAgeInput(-1)">−</button>
+                                <input type="number" id="gameUserAgeInput" min="3" max="99" value="7" oninput="onUserAgeInputChange()">
+                                <button type="button" class="age-stepper-btn" onclick="adjustAgeInput(1)">+</button>
+                                <span class="age-unit">वर्ष (Years)</span>
+                            </div>
+                            <div class="age-detection-preview" id="ageDetectionPreview">
+                                ✨ <strong>लेवल 1: बच्चे (Kids 3–8 yrs)</strong> डिटेक्ट हुआ!
+                            </div>
+                        </div>
+
+                        <div class="age-cards-separator">
+                            <span>या सीधे अपना स्तर चुनें (Or Pick Directly):</span>
+                        </div>
+
+                        <!-- 3 Visual Quick-Pick Cards -->
+                        <div class="age-quick-cards">
+                            <div class="age-card selected" id="ageCardKids" onclick="pickAgeTier('kids')">
+                                <div class="age-card-icon">🧒</div>
+                                <h4>लेवल 1: बच्चे (Kids)</h4>
+                                <span class="age-span">उम्र 3 – 8 वर्ष (Boys & Girls)</span>
+                                <p>रंग-बिरंगे गुब्बारे, कूदते जानवर, बड़ी तस्वीरें और मजेदार आवाज़ें!</p>
+                            </div>
+
+                            <div class="age-card" id="ageCardYouth" onclick="pickAgeTier('youth')">
+                                <div class="age-card-icon">⚡</div>
+                                <h4>लेवल 2: किशोर (Teens)</h4>
+                                <span class="age-span">उम्र 9 – 17 वर्ष (Youth)</span>
+                                <p>स्पीड टाइमर मैच, कॉम्बो स्ट्रीक और शब्द पहेली (Word Scramble)!</p>
+                            </div>
+
+                            <div class="age-card" id="ageCardAdults" onclick="pickAgeTier('adults')">
+                                <div class="age-card-icon">🏛️</div>
+                                <h4>लेवल 3: वयस्क (Adults)</h4>
+                                <span class="age-span">उम्र 18+ वर्ष (Men & Women)</span>
+                                <p>पारंपरिक सांस्कृतिक संदर्भ, लोककथाएँ, संवाद और व्याकरण प्रवीणता!</p>
+                            </div>
+                        </div>
+
+                        <div class="modal-actions">
+                            <button class="primary-btn start-game-confirm-btn" onclick="confirmAgeAndStartGame()">
+                                🚀 खेल शुरू करें (Start Playing)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- =====================================================
+                     BAL VATIKA / KIDS PLAY ZONE
+                ===================================================== -->
+                <div class="page" id="kidszone">
+
+                    <div class="page-heading">
+                        <span class="eyebrow kids-eyebrow">
+                            🎮 बाल वाटिका • FUN KIDS ZONE
+                        </span>
+                        <h1>
+                            खेल-खेल में सीखें मातृभाषा 🎈
+                        </h1>
+                        <p>
+                            Bilingual learning games, animated 3D cards, and stories for young learners.
+                        </p>
+                    </div>
+
+                    <!-- MASCOT BANNER -->
+                    <div class="kids-mascot-banner">
+                        <div class="mascot-avatar-large">
+                            <span class="mascot-plant">🌿</span>
+                            <span class="mascot-face">😊</span>
+                            <span class="mascot-wave">👋</span>
+                        </div>
+                        <div class="mascot-speech">
+                            <h2>
+                                जोहार प्यारे बच्चों! <span class="sparkle">✨</span>
+                            </h2>
+                            <p id="mascotText">
+                                चित्र पहचानो, सही शब्द बताओ और ढेर सारे चमकीले तारे जीतो!
+                            </p>
+                            <div class="mascot-actions">
+                                <button class="mascot-btn" onclick="playGreetingAudio()">
+                                    🔊 जोहार सुनो (Listen Greeting)
+                                </button>
+                                <button class="mascot-btn secondary" onclick="cheerKids()">
+                                    ⭐ शाबाशी लो (Get Cheers)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MODE SELECTOR TABS -->
+                    <div class="kid-tabs">
+                        <button class="kid-tab-btn active" id="tabBtnGame" onclick="switchKidMode('game')">
+                            🎯 पहचानो और जीतो (Tap & Match)
+                        </button>
+                        <button class="kid-tab-btn" id="tabBtnStories" onclick="switchKidMode('stories')">
+                            📖 जादुई चित्र कथा (Picture Stories)
+                        </button>
+                    </div>
+
+                    <!-- GAME SECTION -->
+                    <div id="kidGameSection" class="kid-game-wrapper">
+                        <!-- TOPIC PILLS -->
+                        <div class="kid-topics-bar">
+                            <span class="kid-bar-label">विषय (Topic):</span>
+                            <button class="topic-pill active" onclick="setKidTopic('Colours', this)">🎨 रंग</button>
+                            <button class="topic-pill" onclick="setKidTopic('Animals', this)">🐾 जानवर</button>
+                            <button class="topic-pill" onclick="setKidTopic('Numbers', this)">🔢 गिनती</button>
+                            <button class="topic-pill" onclick="setKidTopic('Classroom', this)">🏫 कक्षा</button>
+                        </div>
+
+                        <!-- SCOREBOARD -->
+                        <div class="kid-scoreboard">
+                            <div class="score-badge stars-badge">
+                                <span>⭐</span>
+                                <div>
+                                    <small>कुल तारे</small>
+                                    <strong id="kidStars">0</strong>
+                                </div>
+                            </div>
+                            <div class="score-badge streak-badge">
+                                <span>🔥</span>
+                                <div>
+                                    <small>स्ट्रीक</small>
+                                    <strong id="kidStreak">0</strong>
+                                </div>
+                            </div>
+                            <div class="score-badge target-lang-badge">
+                                <span>🌿</span>
+                                <div>
+                                    <small>भाषा</small>
+                                    <strong id="kidCurrentLangLabel">Santhali</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- QUIZ STAGE -->
+                        <div class="kid-quiz-card" id="kidQuizCard">
+                            <div class="quiz-question-header">
+                                <span class="question-tag" id="kidQuestionTag">सवाल 1/5</span>
+                                <span class="quiz-instruction">चित्र पहचानकर मातृभाषा में सही शब्द चुनो 👇</span>
+                            </div>
+
+                            <div class="quiz-visual-box">
+                                <div class="quiz-big-emoji" id="quizEmoji">
+                                    🐘
+                                </div>
+                                <div class="quiz-hindi-word" id="quizHindiWord">
+                                    हाथी
+                                </div>
+                                <div class="quiz-hint-text" id="quizHint">
+                                    संथाली में इसे क्या कहते हैं?
+                                </div>
+                            </div>
+
+                            <div class="quiz-options-grid" id="quizOptionsGrid">
+                                <!-- Option buttons rendered dynamically -->
+                            </div>
+
+                            <!-- FEEDBACK BANNER -->
+                            <div class="quiz-feedback-box" id="quizFeedback">
+                                <div id="feedbackIcon">⭐</div>
+                                <div id="feedbackMessage">शाबाश! बहुत अच्छे!</div>
+                                <button class="primary-btn next-quiz-btn" id="nextQuizBtn" onclick="nextKidQuestion()">
+                                    अगला सवाल → (Next)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STORIES SECTION -->
+                    <div id="kidStoriesSection" class="kid-stories-wrapper" style="display:none;">
+                        <div class="stories-controls">
+                            <h3>चित्र कथा चुनें (Select Story)</h3>
+                            <div class="story-chips" id="storyChips">
+                                <!-- Chips loaded dynamically -->
+                            </div>
+                        </div>
+
+                        <div class="story-reader-card panel" id="activeStoryReader">
+                            <!-- Story loaded dynamically -->
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================================
+     OFFLINE CENTER
+===================================================== -->
+
+                <div class="page" id="offline">
+
+
+                    <div class="page-heading">
+
+                        <span class="eyebrow">
+                            LOW CONNECTIVITY MODE
+                        </span>
+
+                        <h1>
+                            Offline Center
+                        </h1>
+
+                        <p>
+                            Keep teaching even when the internet disappears.
+                        </p>
+
+                    </div>
+
+
+                    <div class="offline-hero">
+
+                        <div class="offline-icon">
+                            📡
+                        </div>
+
+                        <div>
+
+                            <span class="offline-status">
+                                OFFLINE READY
+                            </span>
+
+                            <h2>
+                                Your classroom can keep running.
+                            </h2>
+
+                            <p>
+                                PALASH stores essential language resources,
+                                curriculum content and generated materials
+                                locally on the tablet.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="offline-grid">
+
+
+                        <div class="offline-card">
+
+                            <div class="offline-card-top">
+
+                                <span>
+                                    Language Pack
+                                </span>
+
+                                <strong>
+                                    92%
+                                </strong>
+
+                            </div>
+
+                            <h3>
+                                Santhali
+                            </h3>
+
+                            <div class="progress">
+
+                                <span style="width:92%"></span>
+
+                            </div>
+
+                            <small>
+                                48 MB • 1,248 phrases
+                            </small>
+
+                        </div>
+
+
+                        <div class="offline-card">
+
+                            <div class="offline-card-top">
+
+                                <span>
+                                    FLN Curriculum
+                                </span>
+
+                                <strong>
+                                    100%
+                                </strong>
+
+                            </div>
+
+                            <h3>
+                                Grade 1
+                            </h3>
+
+                            <div class="progress">
+
+                                <span style="width:100%"></span>
+
+                            </div>
+
+                            <small>
+                                32 MB • 156 activities
+                            </small>
+
+                        </div>
+
+
+                        <div class="offline-card">
+
+                            <div class="offline-card-top">
+
+                                <span>
+                                    Audio Pack
+                                </span>
+
+                                <strong>
+                                    76%
+                                </strong>
+
+                            </div>
+
+                            <h3>
+                                Classroom Audio
+                            </h3>
+
+                            <div class="progress">
+
+                                <span style="width:76%"></span>
+
+                            </div>
+
+                            <small>
+                                61 MB • 620 audio clips
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sync-panel panel">
+
+                        <div>
+
+                            <span class="sync-icon">
+                                ↻
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Content Synchronisation
+                                </h3>
+
+                                <p id="syncMessage">
+                                    Latest curriculum package:
+                                    08 September 2026
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <button class="secondary-btn" onclick="syncContent()">
+
+                            Sync Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================================
+     CURRICULUM
+===================================================== -->
+
+                <div class="page" id="curriculum">
+
+
+                    <div class="page-heading">
+
+                        <span class="eyebrow">
+                            NIPUN BHARAT
+                        </span>
+
+                        <h1>
+                            Foundational Learning Framework
+                        </h1>
+
+                        <p>
+                            Curriculum content is mapped to foundational
+                            literacy and numeracy learning outcomes.
+                        </p>
+
+                    </div>
+
+
+                    <!-- COURSE COMPLETION TRACKER BANNER -->
+                    <div class="course-completion-panel panel">
+                        <div class="course-tracker-header">
+                            <div>
+                                <span class="tracker-pill" style="background:#e0e7ff; color:#4338ca;">🎓 NIPUN BHARAT CERTIFICATION</span>
+                                <h2>Foundational Primary Course Progress</h2>
+                                <p>Complete all 3 core FLN modules below to graduate the course and receive your MTB-MLE Primary Educator Certificate!</p>
+                            </div>
+                            <div class="course-status-box">
+                                <span class="badge-status-text" id="courseModulesStatus">0 of 3 Completed</span>
+                                <button class="primary-btn claim-certificate-btn" id="claimCourseCertBtn" onclick="claimCourseCertificate()" style="display:none; margin-top:8px;">
+                                    🏆 Claim Course Certificate
+                                </button>
+                            </div>
+                        </div>
+                        <div class="progress-track" style="height:12px; margin-top:14px;">
+                            <div class="progress-fill" id="courseProgressFill" style="width: 0%; background: linear-gradient(90deg, #3b82f6, #10b981);"></div>
+                        </div>
+                    </div>
+
+                    <div class="curriculum-cards">
+
+
+                        <div class="curriculum-card" id="cardModuleLiteracy">
+
+                            <div class="curriculum-number">
+                                01
+                            </div>
+
+                            <span>
+                                LITERACY
+                            </span>
+
+                            <h2>
+                                Foundational Literacy
+                            </h2>
+
+                            <p>
+                                Learners identify familiar sounds,
+                                words and simple sentences.
+                            </p>
+
+                            <div class="outcome">
+                                NIPUN-LIT-01
+                            </div>
+
+                            <button class="module-action-btn" id="btnModuleLit" onclick="toggleModuleCompletion('literacy')">
+                                <span class="check-circle">○</span> Mark Module as Completed
+                            </button>
+
+                        </div>
+
+
+                        <div class="curriculum-card" id="cardModuleNumeracy">
+
+                            <div class="curriculum-number">
+                                02
+                            </div>
+
+                            <span>
+                                NUMERACY
+                            </span>
+
+                            <h2>
+                                Foundational Numeracy
+                            </h2>
+
+                            <p>
+                                Learners recognise numbers,
+                                quantities and perform simple operations.
+                            </p>
+
+                            <div class="outcome">
+                                NIPUN-NUM-01
+                            </div>
+
+                            <button class="module-action-btn" id="btnModuleNum" onclick="toggleModuleCompletion('numeracy')">
+                                <span class="check-circle">○</span> Mark Module as Completed
+                            </button>
+
+                        </div>
+
+
+                        <div class="curriculum-card" id="cardModuleLanguage">
+
+                            <div class="curriculum-number">
+                                03
+                            </div>
+
+                            <span>
+                                LANGUAGE
+                            </span>
+
+                            <h2>
+                                Mother Tongue Vocabulary
+                            </h2>
+
+                            <p>
+                                Build vocabulary using familiar
+                                objects, images and classroom activities.
+                            </p>
+
+                            <div class="outcome">
+                                NIPUN-LANG-01
+                            </div>
+
+                            <button class="module-action-btn" id="btnModuleLang" onclick="toggleModuleCompletion('language')">
+                                <span class="check-circle">○</span> Mark Module as Completed
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="framework-flow panel">
+
+                        <div class="flow-step">
+
+                            <div>
+                                1
+                            </div>
+
+                            <strong>
+                                Hindi Curriculum
+                            </strong>
+
+                            <span>
+                                Existing FLN content
+                            </span>
+
+                        </div>
+
+
+                        <div class="flow-line">
+                            →
+                        </div>
+
+
+                        <div class="flow-step">
+
+                            <div>
+                                2
+                            </div>
+
+                            <strong>
+                                PALASH NLP
+                            </strong>
+
+                            <span>
+                                Context-aware translation
+                            </span>
+
+                        </div>
+
+
+                        <div class="flow-line">
+                            →
+                        </div>
+
+
+                        <div class="flow-step">
+
+                            <div>
+                                3
+                            </div>
+
+                            <strong>
+                                Mother Tongue
+                            </strong>
+
+                            <span>
+                                Text + Audio
+                            </span>
+
+                        </div>
+
+
+                        <div class="flow-line">
+                            →
+                        </div>
+
+
+                        <div class="flow-step">
+
+                            <div>
+                                4
+                            </div>
+
+                            <strong>
+                                Child Learning
+                            </strong>
+
+                            <span>
+                                Better comprehension
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================================
+                     USER PROFILE & PERFORMANCE HUB
+                ===================================================== -->
+                <div class="page" id="profile">
+
+                    <div class="page-heading">
+                        <span class="eyebrow">
+                            📊 LEARNER & TEACHER PERFORMANCE HUB
+                        </span>
+                        <h1>
+                            My Learning Profile & Stats
+                        </h1>
+                        <p>
+                            Track foundational literacy and numeracy progress, topic mastery, quizzes, and earned achievement honors.
+                        </p>
+                    </div>
+
+                    <!-- PROFILE HERO CARD -->
+                    <div class="profile-hero panel">
+                        <div class="profile-hero-left">
+                            <div class="profile-avatar-wrapper" onclick="openAvatarModal()" title="Click to change avatar">
+                                <div class="profile-avatar-large" id="profileUserAvatar">
+                                    👨‍🏫
+                                </div>
+                                <span class="avatar-edit-badge" title="Change Avatar">✏️</span>
+                            </div>
+                            <div class="profile-identity">
+                                <div class="profile-name-row">
+                                    <h2 id="profileUserName">Sunita Murmu</h2>
+                                    <button class="icon-edit-btn" onclick="openEditProfileModal()" title="Edit Name & Details">✏️ Edit Profile</button>
+                                </div>
+                                <div class="profile-meta-tags">
+                                    <span class="meta-tag" id="profileUserRole">👨‍🏫 Primary Educator</span>
+                                    <span class="meta-tag" id="profileUserSchool">🏫 GPS Dumka, Jharkhand</span>
+                                    <span class="meta-tag" id="profileUserGrade">🎒 Grade 1 - 3 (FLN)</span>
+                                    <span class="meta-tag lang-tag" id="profileUserLang">🇮🇳 Santhali (Ol Chiki)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-level-card">
+                            <div class="level-badge-top">
+                                <span class="level-label">CURRENT RANK</span>
+                                <strong id="profileLevelText">Level 3 • FLN Explorer</strong>
+                            </div>
+                            <div class="xp-bar-container">
+                                <div class="xp-bar-labels">
+                                    <span>Experience Points</span>
+                                    <strong id="profileXpText">480 / 600 XP</strong>
+                                </div>
+                                <div class="progress-track xp-track">
+                                    <div class="progress-fill xp-fill" id="profileXpFill" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="streak-pill">
+                                🔥 <strong id="profileStreakCount">5</strong> Day Learning Streak!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PERFORMANCE KEY METRICS GRID -->
+                    <div class="performance-metrics-grid">
+                        <div class="metric-card gold">
+                            <div class="metric-icon">⭐</div>
+                            <div class="metric-details">
+                                <span class="metric-label">Total Stars Earned</span>
+                                <strong class="metric-number" id="profileStatStars">0</strong>
+                                <small class="metric-hint">+10 stars per correct question</small>
+                            </div>
+                        </div>
+
+                        <div class="metric-card teal">
+                            <div class="metric-icon">🎮</div>
+                            <div class="metric-details">
+                                <span class="metric-label">Game Challenges Won</span>
+                                <strong class="metric-number" id="profileStatGames">0</strong>
+                                <small class="metric-hint">Kids, Teens & Adults levels</small>
+                            </div>
+                        </div>
+
+                        <div class="metric-card blue">
+                            <div class="metric-icon">📝</div>
+                            <div class="metric-details">
+                                <span class="metric-label">Worksheets Solved</span>
+                                <strong class="metric-number" id="profileStatWorksheets">0</strong>
+                                <small class="metric-hint">Bilingual FLN activities</small>
+                            </div>
+                        </div>
+
+                        <div class="metric-card purple">
+                            <div class="metric-icon">🎯</div>
+                            <div class="metric-details">
+                                <span class="metric-label">Quiz Accuracy</span>
+                                <strong class="metric-number" id="profileStatAccuracy">100%</strong>
+                                <small class="metric-hint" id="profileStatQuizCount">0 quizzes completed</small>
+                            </div>
+                        </div>
+
+                        <div class="metric-card emerald">
+                            <div class="metric-icon">🎓</div>
+                            <div class="metric-details">
+                                <span class="metric-label">Curriculum Modules</span>
+                                <strong class="metric-number" id="profileStatModules">0 / 3</strong>
+                                <small class="metric-hint">NIPUN Bharat framework</small>
+                            </div>
+                        </div>
+
+                        <div class="metric-card orange">
+                            <div class="metric-icon">🔊</div>
+                            <div class="metric-details">
+                                <span class="metric-label">Audio Pronunciations</span>
+                                <strong class="metric-number" id="profileStatAudio">0</strong>
+                                <small class="metric-hint">Mother tongue speech practice</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TWO COLUMN LAYOUT: TOPIC MASTERY & ACHIEVEMENTS -->
+                    <div class="profile-two-col">
+
+                        <!-- TOPIC MASTERY BARS -->
+                        <div class="panel mastery-panel">
+                            <div class="panel-header-row">
+                                <h3>📊 Topic Mastery Progress</h3>
+                                <button class="text-action-btn" onclick="openPage('game')">Play Language Arena →</button>
+                            </div>
+                            <p class="section-subtext">Master vocabulary & concept topics through interactive language games and exercises.</p>
+
+                            <div class="mastery-list" id="topicMasteryList">
+                                <!-- Populated dynamically by script.js -->
+                            </div>
+                        </div>
+
+                        <!-- ACHIEVEMENTS & BADGES -->
+                        <div class="panel badges-panel">
+                            <div class="panel-header-row">
+                                <h3>🏆 Honors & Badges</h3>
+                                <span class="badge-count-pill" id="profileBadgeCount">0 / 6 Unlocked</span>
+                            </div>
+                            <p class="section-subtext">Unlock honors as you complete courses, ace quizzes, and master tribal vocabulary.</p>
+
+                            <div class="badges-grid" id="profileBadgesGrid">
+                                <!-- Populated dynamically by script.js -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- RECENT ACTIVITY TIMELINE & MISTAKES REVIEW -->
+                    <div class="panel activity-panel">
+                        <div class="panel-header-row">
+                            <h3>📜 Recent Learning Activities & Progress Log</h3>
+                            <button class="secondary-btn" style="padding: 6px 14px; font-size:12px;" onclick="resetLearningHistory()">
+                                ↺ Reset Progress
+                            </button>
+                        </div>
+                        <div class="activity-timeline" id="profileActivityTimeline">
+                            <div class="empty-timeline">
+                                <span>🌱</span>
+                                <p>No activities yet. Start by playing Language Arena games or solving a worksheet!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+     TOAST
+===================================================== -->
+
+            <div id="toast" class="toast">
+                <span id="toastIcon">
+                    ✓
+                </span>
+
+                <span id="toastMessage">
+                    Done
+                </span>
+            </div>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         CELEBRATION MODAL OVERLAY
+    ===================================================== -->
+    <div id="celebrationModal" class="celebration-overlay" style="display:none;" role="dialog" aria-modal="true">
+        <div class="celebration-backdrop" onclick="closeCelebrationModal()"></div>
+        <div class="celebration-card" id="celebrationCard">
+            <button class="celebration-close-btn" onclick="closeCelebrationModal()" aria-label="Close">✕</button>
+            <div class="celebration-halo"></div>
+            <div class="celebration-badge-glow">
+                <div class="celebration-icon" id="celebrationIcon">🏆</div>
+            </div>
+            <span class="celebration-pill" id="celebrationPill">TOPIC MASTERED</span>
+            <h2 id="celebrationTitle">शानदार! Outstanding Achievement!</h2>
+            <p id="celebrationSubtitle">You successfully mastered all vocabulary cards in this topic!</p>
+            
+            <div class="celebration-stars" id="celebrationStars">
+                <span class="celebration-star star-1">⭐</span>
+                <span class="celebration-star star-2">⭐</span>
+                <span class="celebration-star star-3">⭐</span>
+            </div>
+
+            <div class="celebration-stats-grid" id="celebrationStatsGrid">
+                <!-- Dynamically populated stats -->
+            </div>
+
+            <div class="celebration-actions">
+                <button class="secondary-btn" id="celebrationReviewBtn" onclick="closeCelebrationModal()">
+                    🔍 Review Answers
+                </button>
+                <button class="primary-btn celebration-next-btn" id="celebrationNextBtn" onclick="celebrateNextStep()">
+                    🚀 Continue Learning →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================
+         AVATAR PICKER MODAL
+    ===================================================== -->
+    <div id="avatarModal" class="celebration-overlay" style="display:none;">
+        <div class="celebration-backdrop" onclick="closeAvatarModal()"></div>
+        <div class="avatar-modal-card">
+            <div class="modal-header">
+                <h3>Choose Your Learning Avatar</h3>
+                <button class="close-x-btn" onclick="closeAvatarModal()">✕</button>
+            </div>
+            <p style="color:var(--text-secondary); margin-bottom:16px;">Select an avatar to personalize your profile and classroom badge:</p>
+            <div class="avatar-grid" id="avatarPickerGrid">
+                <!-- Avatars rendered by script.js -->
+            </div>
+            <button class="secondary-btn full" onclick="closeAvatarModal()" style="margin-top:16px;">Cancel</button>
+        </div>
+    </div>
+
+    <!-- =====================================================
+         EDIT PROFILE MODAL
+    ===================================================== -->
+    <div id="editProfileModal" class="celebration-overlay" style="display:none;">
+        <div class="celebration-backdrop" onclick="closeEditProfileModal()"></div>
+        <div class="avatar-modal-card" style="max-width: 480px;">
+            <div class="modal-header">
+                <h3>✏️ Edit Learning Profile</h3>
+                <button class="close-x-btn" onclick="closeEditProfileModal()">✕</button>
+            </div>
+            <div class="edit-profile-form" style="display:flex; flex-direction:column; gap:14px; margin-top:14px;">
+                <div>
+                    <label style="font-weight:600; font-size:13px; color:var(--text-secondary); display:block; margin-bottom:4px;">Full Name</label>
+                    <input type="text" id="inputProfileName" class="form-input" style="width:100%; padding:10px 14px; border:1px solid var(--border-color); border-radius:var(--radius-sm);" placeholder="Enter your name">
+                </div>
+                <div>
+                    <label style="font-weight:600; font-size:13px; color:var(--text-secondary); display:block; margin-bottom:4px;">School / Institution</label>
+                    <input type="text" id="inputProfileSchool" class="form-input" style="width:100%; padding:10px 14px; border:1px solid var(--border-color); border-radius:var(--radius-sm);" placeholder="e.g. GPS Dumka, Jharkhand">
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+                    <div>
+                        <label style="font-weight:600; font-size:13px; color:var(--text-secondary); display:block; margin-bottom:4px;">Grade Level</label>
+                        <select id="inputProfileGrade" style="width:100%; padding:10px 12px; border:1px solid var(--border-color); border-radius:var(--radius-sm);">
+                            <option value="Grade 1 (FLN)">Grade 1 (FLN)</option>
+                            <option value="Grade 2 (FLN)">Grade 2 (FLN)</option>
+                            <option value="Grade 3 (FLN)">Grade 3 (FLN)</option>
+                            <option value="Grade 1 - 3 (FLN)">Grade 1 - 3 (FLN)</option>
+                            <option value="Primary Teacher">Primary Teacher</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; font-size:13px; color:var(--text-secondary); display:block; margin-bottom:4px;">Role Mode</label>
+                        <select id="inputProfileRole" style="width:100%; padding:10px 12px; border:1px solid var(--border-color); border-radius:var(--radius-sm);">
+                            <option value="Learner & Student">Learner & Student</option>
+                            <option value="Primary Educator">Primary Educator</option>
+                            <option value="Classroom Teacher">Classroom Teacher</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display:flex; gap:10px; margin-top:10px;">
+                    <button class="secondary-btn" onclick="closeEditProfileModal()" style="flex:1;">Cancel</button>
+                    <button class="primary-btn" onclick="saveProfileChanges()" style="flex:1;">Save Profile ✓</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================
+         OFFICIAL COURSE CERTIFICATE MODAL
+    ===================================================== -->
+    <div id="certificateModal" class="celebration-overlay" style="display:none;">
+        <div class="celebration-backdrop" onclick="closeCertificateModal()"></div>
+        <div class="certificate-modal-card">
+            <button class="close-x-btn" onclick="closeCertificateModal()" style="position:absolute; right:16px; top:16px;">✕</button>
+            <div class="certificate-frame" id="printableCertificate">
+                <div class="certificate-corner top-left">🌿</div>
+                <div class="certificate-corner top-right">🌿</div>
+                <div class="certificate-corner bottom-left">🌿</div>
+                <div class="certificate-corner bottom-right">🌿</div>
+                
+                <span class="cert-gov">GOVERNMENT OF JHARKHAND • DEPT. OF SCHOOL EDUCATION</span>
+                <h2 class="cert-title">CERTIFICATE OF COURSE COMPLETION</h2>
+                <p class="cert-sub">PALASH MTB-MLE Multilingual Education Technology Bridge</p>
+                
+                <div class="cert-body">
+                    <p>This is to proudly certify that</p>
+                    <h3 class="cert-name" id="certStudentName">Sunita Murmu</h3>
+                    <p>has successfully completed all requirements of the</p>
+                    <h4 class="cert-course">NIPUN Bharat Foundational Multilingual Primary Course</h4>
+                    <p class="cert-detail">Demonstrating excellence in Foundational Literacy (NIPUN-LIT-01), Foundational Numeracy (NIPUN-NUM-01), and Mother Tongue Bridging (Santhali, Ho, Mundari).</p>
+                </div>
+
+                <div class="cert-footer">
+                    <div class="cert-seal">
+                        <span>🎖️</span>
+                        <small>PALASH MTB-MLE<br>OFFICIAL VERIFIED</small>
+                    </div>
+                    <div class="cert-meta">
+                        <div class="cert-line"></div>
+                        <span>Date Issued: <strong id="certIssueDate">Today</strong></span>
+                        <small>Primary Education Board, Jharkhand</small>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:flex; justify-content:center; gap:12px; margin-top:16px;">
+                <button class="secondary-btn" onclick="closeCertificateModal()">Close</button>
+                <button class="primary-btn" onclick="window.print()">🖨️ Print / Save PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
